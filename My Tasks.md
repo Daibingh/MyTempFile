@@ -40,12 +40,26 @@
 - [ ] 缩小范围，打分选择
 - [ ] 尝试opencv中的svm，与MATLAB对比结果
 
+### 手写字体识别
+
+识别方案：
+
+1. 特征提取 + svm
+2. 像素特征 + pca + KNN
+3. 特征提取 + ANN/CNN
+
 ##发现问题
 
 - [ ] opencv SVM trainAuto
-- [ ] 装甲检测，使用blue的检测方法却能检测出红色装甲，使用red的检测方法检测不出蓝色装甲。
-- [ ] mexopencv的编译原理，mexopencv.make(), 自己添加相应的函数。
-- [ ] MATLAB中要不要将图片数据转换成double
+- [x] 装甲检测，使用blue的检测方法却能检测出红色装甲，使用red的检测方法检测不出蓝色装甲。
+- [x] mexopencv的编译原理，mexopencv.make(), 自己添加相应的函数。
+- [x] MATLAB中要不要将图片数据转换成double
+- [ ] git reset 与git checkout区别
+
+## 学习心得
+
+- 要利用Google, 维基
+- 多利用官方例程
 
 ##临时总结
 
@@ -65,7 +79,17 @@
 
 - 确定键：enter、空格
 
-- ​
+- line：命令l，输入“长度 tab 角度”，角度的参照是水平轴正方向
+
+- 重复上次命令，结束后再次输入确定
+
+- 构造线（xline）角度参照的选择
+
+  二等分
+
+  偏移：平行线的偏移（距离或通过）
+
+- 拓展命令通过鼠标右击选择
 
 ### mexopencv与opencv的对比
 
@@ -122,9 +146,10 @@
    %     pause(50/1000);
    end
    release(videoPlayer);
+
    ```
 
-   ​
+10. MATLAB大津算法求最佳阈值：level = graythresh(I)
 
 ### github
 
@@ -189,11 +214,12 @@ Git 是如何知道你当前在哪个分支上工作的呢？其实答案也很�
    git diff <file1> <file2> #比较两个文件的不同
    ```
 
-   **checkout**: 切换分支/tag/提交
+   **checkout**: 切换分支/tag/提交 (撤销)
 
    ```shell
    git checkout v1.0 #切换tag
-   git checkout xxxxxxxxxxxxxxxxxxxx #切换某次提交之前的状态
+   git checkout <COMMIT_ID> #切换某次提交之前的状态
+   git checkout HEAD~ #撤销最后一次提交
    git checkout <branchname> #切换到分支
    ```
 
@@ -221,9 +247,52 @@ Git 是如何知道你当前在哪个分支上工作的呢？其实答案也很�
    git branch #查看本地分支
    git branch -r #查看远程分支
    git checkout branchName origin/branchName #将远程分支迁移到本地
+
    ```
 
-   ​
+8. 查看所有与本地关联的远程仓
+
+   ```shell
+   git remote
+   ```
+
+9. 远程仓的移除和重命名
+
+   ```shell
+   git remote rename <old_name> <new_name> #移除
+   git remote rm <name> #重命名
+   ```
+
+10. 撤销：**reset** 与 **checkout** 对比
+
+   **reset** ：
+
+   1. 不带路径时，移动**当前分支** 和**HEAD** ，并且有选择的变动工作目录和索引。
+   2. 带路径时，用来在从历史仓库中复制文件到索引，不改变当前分支和HEAD指向，不动工作目录（除非使用--hard选项）。
+
+   **checkout** ：
+
+   1. 不带路径时，移动**HEAD**，同时更改索引和工作目录，
+   2. 带路径时，将指定的文件从历史提交中恢复到索引和工作目录，不改变HEAD。注意：两种情况都不改变当前分支的指向。
+
+   ```shell
+   # reset
+   git reset HEAD~ #移动HEAD和当前分支到上一次提交的节点，即撤销提交，索引改变，但是工作目录不变
+   # => 还原分支和索引
+   git reset [HEAD~] <files> #将历史提交中的文件还原到索引，工作目录不变
+   # checkout
+   git checkout <branch_name> #切换分支，只改变head指向
+   git checkout HEAD~ #将head指向上一次提交的节点，同时恢复索引和工作目录，注意分支指向不动
+   git checkout [HEAD~] <files> #将历史提交中的文件还原到索引和工作目录
+   ```
+
+   总结：
+
+   1. 如果要撤销本地修改，使用 git checkout [HEAD~] <files>
+   2. 如果要撤销提交，使用 reset。
+   3. 如果要重新提交，使用 git commit --amend , 实际上也可以用 reset实现。
+
+   ​		
 
 ### MEX
 
@@ -390,19 +459,27 @@ type有：UNIFORM, NORMAL
 
 ## 备忘录
 
-- [ ] 实现MATLAB解析xml文件，目前只完成dt=d类型的解析，还有其它类型
-- [ ] github测试，分支原理，创建，切换，撤销, git flow，git log如何看，head等词语的含义
+- [x] 实现MATLAB解析xml文件，目前只完成dt=d类型的解析，还有其它类型
+- [x] github测试，分支原理，创建，切换，撤销, git flow，git log如何看，head等词语的含义
 - [ ] gists
+- [ ] Python学习
+- [ ] MATLAB code generation
 
 ##每天计划
 
+2017.12.23
+
+- [ ] Python
+- [ ] 手写字体识别，opencv与MATLAB官方例程
+- [ ] 课程设计
+
 2017.12.21
 
-- [ ] pcs7
-- [ ] 复习运控
+- [x] pcs7
+- [x] 复习运控
 - [ ] 复习过控
 - [ ] 复习先进控制
-- [ ] 程序分类整理，上传
+- [x] 程序分类整理，上传
 
 2017.12.20
 
