@@ -4,9 +4,9 @@
 
 [TOC]
 
-##近期任务
+## 近期任务
 
-###机器视觉
+### 机器视觉
 
 - 特征提取算法
   - Haar-like
@@ -27,11 +27,11 @@
 
 ### easypr学习
 
-###github
+### github
 
 
 
-###装甲识别
+### 装甲识别
 
 - [x] safeRect()
 - [x] 外接矩形的拓展和阈值统计，和相应的辅助函数编写
@@ -48,7 +48,7 @@
 2. 像素特征 + pca + KNN
 3. 特征提取 + ANN/CNN
 
-##发现问题
+## 发现问题
 
 - [ ] opencv SVM trainAuto
 - [x] 装甲检测，使用blue的检测方法却能检测出红色装甲，使用red的检测方法检测不出蓝色装甲。
@@ -61,7 +61,7 @@
 - 要利用Google, 维基
 - 多利用官方例程
 
-##临时总结
+## 临时总结
 
 ### AutoCAD
 
@@ -376,7 +376,7 @@ void mexFunction ( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] )
 
 完成后，test_mex就相当于MATLAB中的的函数，可以直接调用。
 
-###c++
+### c++
 
 获取时间
 
@@ -465,7 +465,7 @@ type有：UNIFORM, NORMAL
 - [ ] Python学习
 - [ ] MATLAB code generation
 
-##每天计划
+## 每天计划
 
 2017.12.23
 
